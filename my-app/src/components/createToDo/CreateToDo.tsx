@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { toDoState } from "../atoms";
+import { toDoState } from "../../atoms";
+import * as S from "./Styled";
 
 interface IForm {
   toDo: string;
@@ -17,14 +18,14 @@ export default function CreateToDo() {
     setValue("toDo", "");
   };
   return (
-    <form onSubmit={handleSubmit(handleValid)}>
-      <input
+    <S.FormStyle onSubmit={handleSubmit(handleValid)}>
+      <S.InputStyle
         {...register("toDo", {
           required: "Please write a To Do",
         })}
         placeholder="Write a to do"
       />
-      <button>Add</button>
-    </form>
+      <S.ButtonStyle>Add</S.ButtonStyle>
+    </S.FormStyle>
   );
 }
